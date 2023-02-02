@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<header class="container">
+    <div class="row">
+    <div class="col md-4">
+        <img src="{% static 'portfolio/profile.png' %}" alt="" class="img-fluid">
+    </div>
+
+    <div class="col-6 md-8 px-10 text-center">
+        <h1>¡Hola! I'm Rodrigo, a Programmer Analyst who lives in Santiago, Chile.</h1>
+        <h3>I'm a programmer who really loves to learn new ways to improve my skills everyday.</h3><p>I'm also a nutritionist.</p>
+    </div>
+    </div>
+</header>
+
+    <h2 class="mx-10 text-center">My Projects</h2>
+<div class="col-md-4 mx-3">
+    <div class="card bg-black card-project">
+        {% for project in projects %}
+
+        <div class="card-header text-center">{{ project.title }}</div>
+        <div class="card-body">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid">
+        <p> {{ project.description }} </p>
+        <p class="description">Languages: {{ project.language }}</p>
+            
+            <a href="{{ project.url }} " class="btn btn-light" target="_blank" >{{ project.url }}</a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
