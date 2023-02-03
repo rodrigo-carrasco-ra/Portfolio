@@ -81,9 +81,9 @@ DATABASES = {
         'default': {  
             'ENGINE': 'django.db.backends.mysql',  
             'NAME': 'portfolio',  
-            'USER': 'b44ebe175b533b',  
-            'PASSWORD': '80d86609',  
-            'HOST': '127.0.0.1',  
+            'USER': 'u755vab3bilqupqy',  
+            'PASSWORD': 'kseogmehc7dom8kq',  
+            'HOST': 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',  
             'PORT': '3306',  
             'OPTIONS': {  
                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
