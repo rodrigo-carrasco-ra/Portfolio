@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'PortfolioDjango.wsgi.application'
 DATABASES = {  
         'default': {  
             'ENGINE': 'django.db.backends.mysql',  
-            'NAME': 'portfolio',  
+            'NAME': 'p8oyoutn272uz9w6',  
             'USER': 'u755vab3bilqupqy',  
             'PASSWORD': 'kseogmehc7dom8kq',  
             'HOST': 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',  
