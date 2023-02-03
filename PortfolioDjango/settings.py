@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-f(90p)78@8ni2n!!hzv-1bn-ez5w2*u1x(n+yaijg6m^&zf*bz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'PortfolioDjango.urls'
@@ -76,12 +78,19 @@ WSGI_APPLICATION = 'PortfolioDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {  
+        'default': {  
+            'ENGINE': 'django.db.backends.mysql',  
+            'NAME': 'portfolio',  
+            'USER': 'root',  
+            'PASSWORD': '44femx3G!',  
+            'HOST': '127.0.0.1',  
+            'PORT': '3306',  
+            'OPTIONS': {  
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+            }  
+        }  
+    }  
 
 
 # Password validation
@@ -118,13 +127,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-MEDIA_ROOT= BASE_DIR / 'media'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
-MEDIA_URL = 'media/'
+MEDIA_URL = "/media/"
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
